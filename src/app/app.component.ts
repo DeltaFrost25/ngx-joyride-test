@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { JoyrideService } from 'ngx-joyride';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'onboarding-test';
+
 }

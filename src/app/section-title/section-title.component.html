@@ -1,0 +1,81 @@
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">Album example</h1>
+      <p class="lead text-muted">
+        Something short and leading about the collection below—its contents, the
+        creator, etc. Make it short and sweet, but not too short so folks don’t
+        simply skip over it entirely.
+      </p>
+      <p>
+        <button class="btn btn-primary my-2">Main call to action</button>
+        <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+      </p>
+      <!--< div style="border: 1px solid black; position: absolute; z-index: 1001;">
+          <input matInput [matDatepicker]="picker" 
+          >
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker  #picker ></mat-datepicker>
+
+-->
+
+      <div class="tooltip2">
+        <mat-form-field appearance="fill">
+          <mat-label>Choose a date</mat-label>
+          <input matInput #calendarInput />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="showCalendar = !showCalendar"
+          >
+            <mat-icon>event</mat-icon>
+          </button>
+        </mat-form-field>
+        <div class="tooltiptext2">
+          <mat-card
+            joyrideStep="firstStep"
+            [stepContent]="firstStep"
+            class="demo-inline-calendar-card"
+          >
+            <mat-calendar (yearSelected)="yearSelected($event)"></mat-calendar>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<ng-template #firstStep>
+  <!-- <div style="height: 200px; width: 300px">
+      <ngb-carousel *ngIf="images">
+        <ng-template ngbSlide>
+          <div class="picsum-img-wrapper">
+            <img [src]="images[0]" alt="Random first slide">
+          </div>
+          <div class="carousel-caption">
+            <h3>First slide label</h3>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </div>
+        </ng-template>
+        <ng-template ngbSlide>
+          <div class="picsum-img-wrapper">
+            <img [src]="images[1]" alt="Random second slide">
+          </div>
+          <div class="carousel-caption">
+            <h3>Second slide label</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        </ng-template>
+        <ng-template ngbSlide>
+          <div class="picsum-img-wrapper">
+            <img [src]="images[2]" alt="Random third slide">
+          </div>
+          <div class="carousel-caption">
+            <h3>Third slide label</h3>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+          </div>
+        </ng-template>
+      </ngb-carousel>
+
+    </div> -->
+  aaaa
+</ng-template>
