@@ -12,7 +12,7 @@
         <a href="#" class="btn btn-secondary my-2">Secondary action</a>
       </p>
       <!--< div style="border: 1px solid black; position: absolute; z-index: 1001;">
-          <input matInput [matDatepicker]="picker" 
+          <input matInput [matDatepicker]="picker"
           >
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker  #picker ></mat-datepicker>
@@ -23,21 +23,14 @@
         <mat-form-field appearance="fill">
           <mat-label>Choose a date</mat-label>
           <input matInput #calendarInput />
-          <button
-            mat-icon-button
-            matSuffix
-            (click)="showCalendar = !showCalendar"
-          >
+          <button mat-icon-button matSuffix (click)="showCalendar = !showCalendar">
             <mat-icon>event</mat-icon>
           </button>
         </mat-form-field>
-        <div class="tooltiptext2">
-          <mat-card
-            joyrideStep="firstStep"
-            [stepContent]="firstStep"
-            class="demo-inline-calendar-card"
-          >
-            <mat-calendar (yearSelected)="yearSelected($event)"></mat-calendar>
+        <div class="tooltiptext2" [ngStyle]="showCalendar ? showCalendarStyle : hideCalendarStyle">
+          <mat-card joyrideStep="firstStep" [stepContent]="firstStep" class="demo-inline-calendar-card">
+            <mat-calendar (yearSelected)="yearSelected($event, 'year')" (monthSelected)="yearSelected($event, 'month')"
+              (selectedChange)="yearSelected($event, 'day')" [(selected)]="selectedDate"></mat-calendar>
           </mat-card>
         </div>
       </div>
@@ -45,6 +38,7 @@
   </div>
 </section>
 <ng-template #firstStep>
+
   <!-- <div style="height: 200px; width: 300px">
       <ngb-carousel *ngIf="images">
         <ng-template ngbSlide>
@@ -77,5 +71,5 @@
       </ngb-carousel>
 
     </div> -->
-  aaaa
+  {{textContent}}
 </ng-template>

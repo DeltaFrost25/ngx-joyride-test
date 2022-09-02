@@ -18,8 +18,18 @@ import { Subject, Subscription } from 'rxjs';
   styleUrls: ['./section-title.component.css'],
 })
 export class SectionTitleComponent implements OnInit, AfterViewInit {
+  textContent: string = '';
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
   showCalendar: boolean = true;
+  hideCalendarStyle = {
+    visibility: 'hidden',
+    opacity: 0,
+  };
+  showCalendarStyle = {
+    visibility: 'visible',
+    opacity: 1,
+  };
+  selectedDate: Date = new Date();
 
   public subject: Subject<JoyrideStepInfo> = new Subject<JoyrideStepInfo>();
 
@@ -63,13 +73,16 @@ export class SectionTitleComponent implements OnInit, AfterViewInit {
     this.joyrideService.startTour({ steps: ['firstStep', 'secondStep'] });
   }
 
-  yearSelected(val: Event) {
-    this.joyrideStepService.next();
+  yearSelected(val: Event, type: string) {
+    if (type === 'year') this.textContent = 'Año seleccionado';
+    if (type === 'month') this.textContent = 'Mes seleccionado';
+    if (type === 'day') this.textContent = 'Fecha seleccionada';
+    /* this.joyrideStepService.next(); */
   }
 }
 
 /* service joyride */
-/* 
+/*
 import { Injectable } from '@angular/core';
 import { JoyrideService, JoyrideStepService } from 'ngx-joyride';
 import { BehaviorSubject } from 'rxjs';
