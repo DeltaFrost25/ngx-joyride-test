@@ -1,3 +1,4 @@
+import { animate, transition, trigger } from '@angular/animations';
 import {
   AfterViewChecked,
   AfterViewInit,
@@ -20,6 +21,7 @@ import { Subject, Subscription } from 'rxjs';
 export class SectionTitleComponent implements OnInit, AfterViewInit {
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
   showCalendar: boolean = true;
+  stepAnimation: string = '';
 
   public subject: Subject<JoyrideStepInfo> = new Subject<JoyrideStepInfo>();
 
@@ -60,7 +62,15 @@ export class SectionTitleComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {}
 
   ngAfterViewInit() {
-    this.joyrideService.startTour({ steps: ['firstStep', 'secondStep'] });
+    /* this.joyrideService
+      .startTour({ steps: ['firstStep', 'secondStep'] })
+      .subscribe((step) => {
+        this.stepAnimation = step.name;
+      }); */
+    let position = document
+      .querySelector('.tooltiptext2')!
+      .getBoundingClientRect();
+    console.log(position.x, position.y, position.width, position.height);
   }
 
   yearSelected(val: Event) {
