@@ -1,4 +1,3 @@
-
       .demo-inline-calendar-card {
         width: 300px;
       }
@@ -20,11 +19,10 @@
         top: 52.75px;
         left: 0;
 
-        /* Margen mitad del width */
-        /* margin-left: -60px; */
-      
-        /* Fade in tooltip */
-        opacity: 1;
-        transition: opacity 0.3s;
-      }
-           
+  /* Margen mitad del width */
+  /* margin-left: -60px; */
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
