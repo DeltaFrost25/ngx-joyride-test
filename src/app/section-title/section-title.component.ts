@@ -30,6 +30,7 @@ export class SectionTitleComponent implements OnInit, AfterViewInit {
     opacity: 1,
   };
   selectedDate: Date = new Date();
+  out: boolean = false;
 
   public subject: Subject<JoyrideStepInfo> = new Subject<JoyrideStepInfo>();
 
@@ -70,7 +71,7 @@ export class SectionTitleComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {}
 
   ngAfterViewInit() {
-    this.joyrideService.startTour({ steps: ['firstStep', 'secondStep'] });
+    /* this.joyrideService.startTour({ steps: ['firstStep', 'secondStep'] }) */
   }
 
   yearSelected(val: Event, type: string) {
