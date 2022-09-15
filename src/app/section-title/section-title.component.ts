@@ -12,6 +12,7 @@ import {
 } from 'ngx-joyride';
 import { JoyrideStepInfo } from 'ngx-joyride/lib/models/joyride-step-info.class';
 import { Subject, Subscription } from 'rxjs';
+import { CustomOnboardingService } from '../services/custom-onboarding.service';
 
 @Component({
   selector: 'app-section-title',
@@ -22,7 +23,6 @@ export class SectionTitleComponent implements OnInit, AfterViewInit {
   textContent: string = '';
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
   showCalendar: boolean = true;
-
   hideCalendarStyle = {
     visibility: 'hidden',
     opacity: 0,
@@ -67,7 +67,8 @@ export class SectionTitleComponent implements OnInit, AfterViewInit {
 
   constructor(
     private readonly joyrideService: JoyrideService,
-    private joyrideStepService: JoyrideStepService
+    private joyrideStepService: JoyrideStepService,
+    private customOnboardingService: CustomOnboardingService
   ) {}
 
   ngOnInit(): void {}
@@ -82,6 +83,7 @@ export class SectionTitleComponent implements OnInit, AfterViewInit {
       .querySelector('.tooltiptext2')!
       .getBoundingClientRect();
     console.log(position.x, position.y, position.width, position.height);
+    this.nextWidth();
   }
 
   yearSelected(val: Event, type: string) {
@@ -89,6 +91,16 @@ export class SectionTitleComponent implements OnInit, AfterViewInit {
     if (type === 'month') this.textContent = 'Mes seleccionado';
     if (type === 'day') this.textContent = 'Fecha seleccionada';
     /* this.joyrideStepService.next(); */
+  }
+
+  nextWidth() {
+    setTimeout(() => {
+      this.customOnboardingService.stepName = 'secondStep';
+      console.log(
+        this.customOnboardingService.stepName,
+        this.customOnboardingService.position
+      );
+    }, 5000);
   }
 }
 
