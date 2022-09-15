@@ -34,16 +34,17 @@ export class OnboardingDirective implements OnInit, AfterViewInit, OnChanges {
     private customOnboardingService: CustomOnboardingService
   ) {
     this.htmlElement = el;
-    if (this.name === this.stepName) {
-      this.customOnboardingService.position =
-        this.el.nativeElement.getBoundingClientRect();
-    } else {
-      console.log('false here');
-    }
   }
   ngAfterViewInit(): void {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.customOnboardingService.nextStep$.subscribe((next) => {
+      if (this.name === next) {
+        this.customOnboardingService.position =
+          this.el.nativeElement.getBoundingClientRect();
+      }
+    });
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     console.log(changes);
