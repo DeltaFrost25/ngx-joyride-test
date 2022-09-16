@@ -19,7 +19,7 @@
 
 -->
 
-      <div class="tooltip2" appOnboarding="secondStep">
+      <div class="tooltip2" appOnboarding="secondStep" joyrideStep="secondStep">
         <mat-form-field appearance="fill">
           <mat-label>Choose a date</mat-label>
           <input matInput #calendarInput />
@@ -30,7 +30,7 @@
           </button>
         </mat-form-field>
         <div class="tooltiptext2" [ngStyle]="showCalendar ? showCalendarStyle : hideCalendarStyle">
-          <mat-card appOnboarding="firstStep" joyrideStep="firstStep" [stepContent]="firstStep"
+          <mat-card id="calendCard" appOnboarding="firstStep" joyrideStep="firstStep" [stepContent]="firstStep"
             class="demo-inline-calendar-card">
             <mat-calendar (yearSelected)="yearSelected($event, 'year')" (monthSelected)="yearSelected($event, 'month')"
               (selectedChange)="yearSelected($event, 'day')" [(selected)]="selectedDate"></mat-calendar>

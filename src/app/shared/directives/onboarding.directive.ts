@@ -40,8 +40,19 @@ export class OnboardingDirective implements OnInit, AfterViewInit, OnChanges {
   ngOnInit() {
     this.customOnboardingService.nextStep$.subscribe((next) => {
       if (this.name === next) {
+        /* offsetTop - window.scrollY */
         this.customOnboardingService.position =
           this.el.nativeElement.getBoundingClientRect();
+        this.customOnboardingService.position2.height =
+          this.el.nativeElement.offsetHeight;
+        this.customOnboardingService.position2.width =
+          this.el.nativeElement.offsetWidth;
+        this.customOnboardingService.position2.left = this.getOffset(
+          this.el.nativeElement
+        ).left;
+        this.customOnboardingService.position2.top = this.getOffset(
+          this.el.nativeElement
+        ).top;
       }
     });
   }
@@ -49,4 +60,15 @@ export class OnboardingDirective implements OnInit, AfterViewInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     console.log(changes);
   }
+  getOffset(el: any) {
+    var _x = 0;
+    var _y = 0;
+    while (el && !isNaN(el.offsetLeft) && !isNaN(el.offsetTop)) {
+      _x += el.offsetLeft - el.scrollLeft;
+      _y += el.offsetTop - el.scrollTop;
+      el = el.offsetParent;
+    }
+    return { top: _y, left: _x };
+  }
+  /* var x = getOffset( document.getElementById('yourElId') ).left;  */
 }

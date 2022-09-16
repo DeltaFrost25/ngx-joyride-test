@@ -1,3 +1,4 @@
+import { NumberSymbol } from '@angular/common';
 import {
   AfterViewInit,
   Injectable,
@@ -7,11 +8,32 @@ import {
 } from '@angular/core';
 import { Subject } from 'rxjs';
 
+interface Position {
+  width: number;
+  height: number;
+  left: number;
+  top: number;
+}
 @Injectable({
   providedIn: 'root',
 })
 export class CustomOnboardingService implements OnChanges {
   startTour: boolean = false;
+
+  private _position2: Position = {
+    width: 0,
+    height: 0,
+    left: 0,
+    top: 0,
+  };
+
+  get position2(): Position {
+    return this._position2;
+  }
+
+  set position2(value: Position) {
+    this._position2 = value;
+  }
 
   private _position: DOMRect = new DOMRect();
 

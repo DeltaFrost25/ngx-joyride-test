@@ -74,16 +74,13 @@ export class SectionTitleComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {}
 
   ngAfterViewInit() {
-    /* this.joyrideService
+    this.joyrideService
       .startTour({ steps: ['firstStep', 'secondStep'] })
       .subscribe((step) => {
-        this.stepAnimation = step.name;
-      }); */
-    let position = document
-      .querySelector('.tooltiptext2')!
-      .getBoundingClientRect();
-    console.log(position.x, position.y, position.width, position.height);
-    this.nextWidth();
+        this.customOnboardingService.startTour = true;
+        this.customOnboardingService.nextStep.next(step.name);
+      });
+    /* this.nextWidth(); */
   }
 
   yearSelected(val: Event, type: string) {

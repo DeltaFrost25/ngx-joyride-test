@@ -21,34 +21,42 @@ export class OverlayComponent implements OnInit, AfterViewInit {
   @Output() close: EventEmitter<boolean> = new EventEmitter();
 
   get position(): {
+    display: string;
     width: string;
     height: string;
     left: string;
     top: string;
   } {
     return {
-      width: this.customOnboardingService.position.width + 'px',
-      height: this.customOnboardingService.position.height + 'px',
-      left: this.customOnboardingService.position.left + window.scrollX + 'px',
-      top: this.customOnboardingService.position.top + window.scrollY + 'px',
+      display: this.start ? 'block' : 'none',
+      width: this.customOnboardingService.position2.width + 'px',
+      height: this.customOnboardingService.position2.height + 'px',
+      left: this.customOnboardingService.position2.left + 'px',
+      top: this.customOnboardingService.position2.top + 'px',
     };
+  }
+
+  get start(): boolean {
+    return this.customOnboardingService.startTour;
   }
 
   constructor(private customOnboardingService: CustomOnboardingService) {}
 
   ngAfterViewInit(): void {
-    let div = document.querySelector('.modal-content') as HTMLElement;
-    div.style.width = this.position.width + 'px';
-    setTimeout(() => {
+    /* let div = document.querySelector('.modal-content') as HTMLElement;
+    console.log(document.getElementById('calendCard')?.offsetTop);
+    div.style.width = this.position.width + 'px'; */
+    /* setTimeout(() => {
       console.log('set overlay');
       this.customOnboardingService.nextStep.next('firstStep');
+      this.customOnboardingService.startTour = true;
       /* div.style.width = this.customOnboardingService.position.width + 'px'; */
-      setTimeout(() => {
+    /*setTimeout(() => {
         console.log('set overlay');
         this.customOnboardingService.nextStep.next('secondStep');
         /* div.style.width = this.customOnboardingService.position.width + 'px'; */
-      }, 3000);
-    }, 3000);
+    /*}, 3000);
+    }, 3000); */
   }
   /* ngAfterViewChecked(): void {
     /* Get the first value of Y background position
@@ -77,4 +85,9 @@ var x = getOffset( document.getElementById('yourElId') ).left; */
 function getTop(el) {
   return el.offsetTop + (el.offsetParent && getTop(el.offsetParent));
 } */
+  /*
+You can try:
+
+node.offsetTop - window.scrollY */
+  /* elReference.offsetTop */
 }

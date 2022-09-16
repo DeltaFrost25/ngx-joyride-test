@@ -13,7 +13,14 @@ body {
   padding: 0;
   height: 100%;
 }
-
+#joyride-step-firstStep .joyride-step__container {
+  border-radius: 45px;
+  box-shadow: 0px 0px 30px 1px green;
+  z-index: 1007 !important;
+}
+.joyride-step__holder {
+  z-index: 1007;
+}
 /* .joyride-step {
     &__holder {
         position: absolute;
@@ -85,3 +92,6 @@ body {
         margin-right: 10px;
     }
 }*/
+.backdrop-container {
+  display: none;
+}

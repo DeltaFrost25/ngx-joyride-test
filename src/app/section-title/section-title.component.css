@@ -1,23 +1,23 @@
-      .demo-inline-calendar-card {
-        width: 300px;
-      }
-      .tooltip2 {
-        position: relative;
-        display: inline-block; /* If you want dots under the hoverable text */
-      }
-      
-      /* Tooltip text */
-      .tooltip2 .tooltiptext2 {
-        visibility: visible;
-        background-color: #555;
-        color: #fff;
-        text-align: center;
-        border-radius: 6px;
-        /* Position the tooltip text */
-        position: absolute;
-        z-index: 1003;
-        top: 52.75px;
-        left: 0;
+.demo-inline-calendar-card {
+  width: 300px;
+}
+.tooltip2 {
+  position: relative;
+  display: inline-block; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip2 .tooltiptext2 {
+  visibility: visible;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1004;
+  top: 52.75px;
+  left: 0;
 
   /* Margen mitad del width */
   /* margin-left: -60px; */
