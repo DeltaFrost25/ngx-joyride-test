@@ -53,6 +53,9 @@ export class OnboardingDirective implements OnInit, AfterViewInit, OnChanges {
         this.customOnboardingService.position2.top = this.getOffset(
           this.el.nativeElement
         ).top;
+        setTimeout(() => {
+          this.el.nativeElement.scrollIntoView();
+        }, 0.5);
       }
     });
   }

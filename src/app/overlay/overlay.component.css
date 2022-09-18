@@ -14,6 +14,15 @@
   transition: all 1s ease-out;
 }
 
+@keyframes witdthAnimation {
+  from { 
+    height: 0; 
+    width: 0;
+    left: 50vw;
+    top: 50vh;
+  }
+}
+
 /* :host {
   position: absolute;
   top: 0;
@@ -24,6 +33,7 @@
 
 /* Modal Content */
 .modal-content {
+  animation: witdthAnimation 2s;
   background-color: transparent;
   border: 1px solid green;
   margin: auto;

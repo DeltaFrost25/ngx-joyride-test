@@ -95,3 +95,6 @@ body {
 .backdrop-container {
   display: none;
 }
+body  div.joyride-step__holder{
+    z-index: 1006;
+  }
