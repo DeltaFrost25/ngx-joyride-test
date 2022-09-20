@@ -1,12 +1,8 @@
 <section class="py-5 text-center container">
   <div class="row py-lg-5">
     <div class="col-lg-6 col-md-8 mx-auto">
-      <h1
-        class="fw-light"
-        appOnboarding="firstStep"
-        joyrideStep="firstStep"
-        [stepContent]="firstStep"
-      >
+      <h1 style="position: relative;" class="fw-light h1zindex" appOnboarding="firstStep" joyrideStep="firstStep"
+        [stepContent]="firstStep">
         Album example
       </h1>
       <p class="lead text-muted">
@@ -30,27 +26,16 @@
         <mat-form-field appearance="fill">
           <mat-label>Choose a date</mat-label>
           <input matInput #calendarInput />
-          <button
-            mat-icon-button
-            matSuffix
-            (click)="showCalendar = !showCalendar"
-          >
+          <button mat-icon-button matSuffix (click)="showCalendar = !showCalendar">
             <mat-icon>
               <img src="assets/calendario.svg" alt="" />
             </mat-icon>
           </button>
         </mat-form-field>
-        <div
-          class="tooltiptext2"
-          [ngStyle]="showCalendar ? showCalendarStyle : hideCalendarStyle"
-        >
+        <div class="tooltiptext2" [ngStyle]="showCalendar ? showCalendarStyle : hideCalendarStyle">
           <mat-card id="calendCard" class="demo-inline-calendar-card">
-            <mat-calendar
-              (yearSelected)="yearSelected($event, 'year')"
-              (monthSelected)="yearSelected($event, 'month')"
-              (selectedChange)="yearSelected($event, 'day')"
-              [(selected)]="selectedDate"
-            ></mat-calendar>
+            <mat-calendar (yearSelected)="yearSelected($event, 'year')" (monthSelected)="yearSelected($event, 'month')"
+              (selectedChange)="yearSelected($event, 'day')" [(selected)]="selectedDate"></mat-calendar>
           </mat-card>
         </div>
       </div>
@@ -92,32 +77,13 @@
     </div> -->
   {{ textContent }}
 </ng-template>
-<div
-  id="modal-container"
-  class="six"
-  [ngClass]="out ? 'out' : ''"
-  onclick="out = !out"
->
+<div id="modal-container" class="six" [ngClass]="out ? 'out' : ''" onclick="out = !out">
   <div class="modal-background">
     <div class="modal">
       <h2>I'm a Modal</h2>
       <p>Hear me roar.</p>
-      <svg
-        class="modal-svg"
-        xmlns="http://www.w3.org/2000/svg"
-        width="100%"
-        height="100%"
-        preserveAspectRatio="none"
-      >
-        <rect
-          x="0"
-          y="0"
-          fill="none"
-          width="226"
-          height="162"
-          rx="3"
-          ry="3"
-        ></rect>
+      <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
+        <rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
       </svg>
     </div>
   </div>

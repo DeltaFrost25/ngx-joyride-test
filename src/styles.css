@@ -18,8 +18,18 @@ body {
   box-shadow: 0px 0px 30px 1px green;
   z-index: 1007 !important;
 }
-.joyride-step__holder {
+body joyride-step .joyride-step__holder {
+  animation: witdthAnimationTwo 2s;
   z-index: 1007;
+}
+
+@keyframes witdthAnimationTwo {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 /* .joyride-step {
     &__holder {
@@ -95,6 +105,6 @@ body {
 .backdrop-container {
   display: none;
 }
-body  div.joyride-step__holder{
-    z-index: 1006;
-  }
+body div.joyride-step__holder {
+  z-index: 1006;
+}

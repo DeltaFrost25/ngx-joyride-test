@@ -1,22 +1,8 @@
 /* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1003; /* Sit on top */
-  /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: hidden; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-  transition: all 1s ease-out;
-}
 
 @keyframes witdthAnimation {
-  from { 
-    height: 0; 
+  from {
+    height: 0;
     width: 0;
     left: 50vw;
     top: 50vh;
@@ -34,10 +20,8 @@
 /* Modal Content */
 .modal-content {
   animation: witdthAnimation 2s;
-  background-color: transparent;
   border: 1px solid green;
   margin: auto;
-  padding: 20px;
   width: 80%;
   position: absolute;
   left: 0;
@@ -47,19 +31,5 @@
   transition: all 1s ease-out;
   display: none;
   z-index: 1004;
-}
-/* The Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  transition: all 1s ease-out;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
+  box-shadow: 0 0 0 99999px rgba(0, 0, 0, 0.8);
 }
