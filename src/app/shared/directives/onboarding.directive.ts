@@ -14,7 +14,7 @@ import { CustomOnboardingService } from 'src/app/services/custom-onboarding.serv
 })
 export class OnboardingDirective implements OnInit, AfterViewInit, OnChanges {
   htmlElement: ElementRef<HTMLElement>;
-
+  prevZindex: string = '';
   _name: string = '';
 
   @Input('appOnboarding') set name(value: string) {
@@ -35,9 +35,8 @@ export class OnboardingDirective implements OnInit, AfterViewInit, OnChanges {
   ) {
     this.htmlElement = el;
   }
-  ngAfterViewInit(): void {}
-
-  ngOnInit() {
+  ngAfterViewInit(): void {
+    let zIndex = this.el.nativeElement.style.zIndex;
     this.customOnboardingService.nextStep$.subscribe((next) => {
       if (this.name === next) {
         /* offsetTop - window.scrollY */
@@ -53,12 +52,20 @@ export class OnboardingDirective implements OnInit, AfterViewInit, OnChanges {
         this.customOnboardingService.position2.top = this.getOffset(
           this.el.nativeElement
         ).top;
+        if (zIndex) this.prevZindex = zIndex;
         setTimeout(() => {
+          this.el.nativeElement.style.position = 'relative';
+          this.el.nativeElement.style.zIndex = '1005';
           this.el.nativeElement.scrollIntoView();
-        }, 0.5);
+        });
+        this.el.nativeElement.scrollIntoView();
+      } else {
+        this.el.nativeElement.style.zIndex = zIndex;
       }
     });
   }
+
+  ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges) {
     console.log(changes);

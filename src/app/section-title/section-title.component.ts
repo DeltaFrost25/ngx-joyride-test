@@ -75,7 +75,7 @@ export class SectionTitleComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.joyrideService
-      .startTour({ steps: ['firstStep', 'secondStep'] })
+      .startTour({ steps: ['firstStep', 'secondStep', 'thirdStep'] })
       .subscribe((step) => {
         this.customOnboardingService.startTour = true;
         this.customOnboardingService.nextStep.next(step.name);

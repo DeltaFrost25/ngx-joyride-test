@@ -1,8 +1,7 @@
 <section class="py-5 text-center container">
   <div class="row py-lg-5">
     <div class="col-lg-6 col-md-8 mx-auto">
-      <h1 style="position: relative;" class="fw-light h1zindex" appOnboarding="firstStep" joyrideStep="firstStep"
-        [stepContent]="firstStep">
+      <h1 class="fw-light" appOnboarding="firstStep" joyrideStep="firstStep" [stepContent]="firstStep">
         Album example
       </h1>
       <p class="lead text-muted">
@@ -11,7 +10,8 @@
         simply skip over it entirely.
       </p>
       <p>
-        <button class="btn btn-primary my-2">Main call to action</button>
+        <button class="btn btn-primary my-2" appOnboarding="thirdStep" joyrideStep="thirdStep">Main call to
+          action</button>
         <a href="#" class="btn btn-secondary my-2">Secondary action</a>
       </p>
       <!--< div style="border: 1px solid black; position: absolute; z-index: 1001;">
