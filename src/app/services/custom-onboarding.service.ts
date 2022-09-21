@@ -6,7 +6,7 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import { Subject } from 'rxjs';
+import { of, Subject } from 'rxjs';
 
 interface Position {
   width: number;
@@ -18,7 +18,15 @@ interface Position {
   providedIn: 'root',
 })
 export class CustomOnboardingService implements OnChanges {
-  startTour: boolean = false;
+  private _startTour: boolean = false;
+
+  get startTour(): boolean {
+    return this._startTour;
+  }
+
+  set startTour(value: boolean) {
+    this._startTour = value;
+  }
 
   private _position2: Position = {
     width: 0,
@@ -72,6 +80,9 @@ export class CustomOnboardingService implements OnChanges {
 
   // Create an observable to watch the subject and send out a stream of updates (You will subscribe to this to get the update stream)
   public nextStep$ = this.nextStep.asObservable(); //Has a $
+
+  public checkScroll = new Subject<boolean>();
+  public checkScroll$ = this.checkScroll.asObservable();
 
   /* // ------ Getting Your updates ----------
    // Subscribe to the observable you created.. data will be updated each time there is a change to Subject
