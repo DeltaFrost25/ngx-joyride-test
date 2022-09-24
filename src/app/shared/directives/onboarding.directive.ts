@@ -37,6 +37,20 @@ export class OnboardingDirective implements OnInit, AfterViewInit, OnChanges {
   ) {
     this.htmlElement = el;
     this.customOnboardingService.checkScroll.next(true);
+    fromEvent(window, 'resize').subscribe(() => {
+      if (this.customOnboardingService.startTour) {
+        this.customOnboardingService.position2.height =
+          this.el.nativeElement.offsetHeight;
+        this.customOnboardingService.position2.width =
+          this.el.nativeElement.offsetWidth;
+        this.customOnboardingService.position2.left = this.getOffset(
+          this.el.nativeElement
+        ).left;
+        this.customOnboardingService.position2.top = this.getOffset(
+          this.el.nativeElement
+        ).top;
+      }
+    });
   }
 
   firstOnboard = false;

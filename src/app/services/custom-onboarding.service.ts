@@ -83,6 +83,25 @@ export class CustomOnboardingService implements OnChanges {
 
   public checkScroll = new Subject<boolean>();
   public checkScroll$ = this.checkScroll.asObservable();
+  /* Here's how you can make it a object and use it for multiple values
+
+export class DataService {
+
+    private cartObject = new BehaviorSubject<Object>({});
+    cartObjectInfo = this.cartObject.asObservable();
+
+    constructor() { }
+
+    changeCart(cartObject) {
+        this.cartObject.next(cartObject);
+    }
+}
+First is get the value in BehaviourSubject
+
+this.data.cartObjectInfo.subscribe(cartObject => {
+   if(cartObject) this.cartObject = cartObject;
+});
+this.data.changeCart({//make the full object here}); */
 
   /* // ------ Getting Your updates ----------
    // Subscribe to the observable you created.. data will be updated each time there is a change to Subject
