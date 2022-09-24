@@ -1,6 +1,9 @@
 <!-- The Modal -->
-<div id="myModal" class="modal" [ngStyle]="{display: start ? 'block' : 'none'}">
+<div
+  id="myModal"
+  class="modal"
+  [ngStyle]="{ display: start ? 'block' : 'none' }"
+>
   <!-- Modal content -->
 </div>
-<div class="modal-content" [ngStyle]="position">
-</div>
+<div class="modal-content" [ngStyle]="truePosition"></div>

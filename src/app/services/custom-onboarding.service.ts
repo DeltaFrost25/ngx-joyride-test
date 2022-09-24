@@ -19,6 +19,7 @@ interface Position {
 })
 export class CustomOnboardingService implements OnChanges {
   private _startTour: boolean = false;
+  public currentStep: string = '';
 
   get startTour(): boolean {
     return this._startTour;
@@ -43,15 +44,8 @@ export class CustomOnboardingService implements OnChanges {
     this._position2 = value;
   }
 
-  private _position: DOMRect = new DOMRect();
-
-  get position(): DOMRect {
-    return this._position;
-  }
-
-  set position(value: DOMRect) {
-    this._position = value;
-  }
+  public position = new Subject<Position>();
+  public position$ = this.position.asObservable(); //Has a $
 
   private _stepName: string = 'firstStep';
 
