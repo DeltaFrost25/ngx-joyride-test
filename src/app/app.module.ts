@@ -1,3 +1,4 @@
+import { ChartComponent } from './chart/chart.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -17,6 +18,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { OverlayComponent } from './overlay/overlay.component';
 import { SharedModule } from './shared/shared.module';
+import { ChartModule } from 'primeng/chart';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +27,7 @@ import { SharedModule } from './shared/shared.module';
     AlbunCardsComponent,
     FooterComponent,
     OverlayComponent,
+    ChartComponent,
   ],
   imports: [
     JoyrideModule.forRoot(),
@@ -40,6 +43,7 @@ import { SharedModule } from './shared/shared.module';
     MatIconModule,
     MatButtonModule,
     SharedModule,
+    ChartModule,
   ],
   providers: [],
   bootstrap: [AppComponent, OverlayComponent],
