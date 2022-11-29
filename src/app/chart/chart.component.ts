@@ -7,6 +7,7 @@ import {
   ChartOptions,
   registerables,
 } from 'node_modules/chart.js';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 @Component({
   selector: 'app-chart',
   templateUrl: './chart.component.html',
@@ -14,27 +15,53 @@ import {
 })
 export class ChartComponent implements OnInit {
   data: ChartData;
-  options: ChartOptions;
+  options: ChartOptions<'doughnut'>;
+  plugins: any = [ChartDataLabels];
 
   constructor() {
     this.data = {
       labels: ['A', 'B', 'C'],
       datasets: [
         {
-          data: [300, 50, 100],
+          data: [5000, 1500, 2500],
           backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+          borderWidth: 10,
           /*           hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-          borderWidth: 20,
           borderColor: 'white',
           hoverBorderColor: 'white', */
-        },
-        {
-          data: [],
+          hoverBorderColor: 'white',
         },
       ],
     };
     this.options = {
+      cutout: '40%',
+      rotation: -65,
+      responsive: true,
+      layout: {
+        padding: 50,
+      },
       plugins: {
+        datalabels: {
+          backgroundColor: 'green' /*
+          borderRadius: 15, */,
+          display: true,
+          anchor: 'end',
+          align: 'end',
+          clamp: true,
+          formatter: function (v, context) {
+            return 'Bs ' + v;
+          },
+          font: {
+            weight: 'bold',
+            size: 15,
+          },
+          padding: {
+            top: 15,
+            bottom: 20,
+            right: 30,
+            left: 11,
+          },
+        },
         tooltip: {
           displayColors: true,
           borderWidth: 1,
@@ -51,20 +78,8 @@ export class ChartComponent implements OnInit {
                 borderWidth: 3,
                 borderRadius: 0,
               };
-              /* return {
-                borderColor: 'rgb(0, 0, 255)',
-                backgroundColor: 'rgb(255, 0, 0)',
-                borderWidth: 2,
-                borderDash: [2, 2],
-                borderRadius: 2,
-              }; */
             },
           },
-        },
-      },
-      elements: {
-        arc: {
-          borderWidth: 20,
         },
       },
     };
@@ -115,6 +130,7 @@ export class ChartComponent implements OnInit {
         },
       },
       borderWidth: 20,
+      cutout: 20,
     };
     const config: ChartConfiguration = {
       type: 'doughnut',
