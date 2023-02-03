@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {
   Chart,
   ChartConfiguration,
@@ -14,17 +14,27 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
   styleUrls: ['./chart.component.css'],
 })
 export class ChartComponent implements OnInit {
-  data: ChartData;
-  options: ChartOptions<'doughnut'>;
+  data!: ChartData;
+  options!: ChartOptions<'doughnut'>;
   plugins: any = [ChartDataLabels];
+  @ViewChild('myCanvas') canvas!: ElementRef;
+  constructor() {}
 
-  constructor() {
+  ngOnInit(): void {
+    let canvas = document.querySelector(
+      'p-chart div canvas'
+    ) as HTMLCanvasElement;
+    let ctx = canvas.getContext('2d');
+    let colors = this.generateGradientGroup(
+      ['#FF691A', '#004E9B', '#009FDA'],
+      canvas
+    );
     this.data = {
       labels: ['A', 'B', 'C'],
       datasets: [
         {
           data: [5000, 1500, 2500],
-          backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+          backgroundColor: colors,
           borderWidth: 10,
           /*           hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
           borderColor: 'white',
@@ -41,9 +51,12 @@ export class ChartComponent implements OnInit {
         padding: 50,
       },
       plugins: {
+        legend: {
+          display: false,
+        },
         datalabels: {
-          backgroundColor: 'green' /*
-          borderRadius: 15, */,
+          /* backgroundColor: 'green'
+          borderRadius: 15, ,*/
           display: true,
           anchor: 'end',
           align: 'end',
@@ -85,8 +98,28 @@ export class ChartComponent implements OnInit {
     };
   }
 
-  ngOnInit(): void {
-    this.createChart();
+  generateGradientGroup(colors: string[], canvas: HTMLCanvasElement) {
+    let gradientArray: CanvasGradient[] = [];
+    colors.forEach((color) =>
+      gradientArray.push(this.generateGradient(color, canvas))
+    );
+    return gradientArray;
+  }
+
+  generateGradient(
+    color: string = '#004E9B',
+    canvas: HTMLCanvasElement
+  ): CanvasGradient {
+    let ctx = canvas.getContext('2d');
+    let gradient = ctx!.createRadialGradient(250, 275, 0, 250, 275, 416.23);
+    if (color === '#004E9B') {
+      gradient.addColorStop(0, '#009FDA');
+      gradient.addColorStop(0.4, '#004E9B');
+      return gradient;
+    }
+    gradient.addColorStop(0, 'rgba(247, 247, 247, 1)');
+    gradient.addColorStop(0.4, color);
+    return gradient;
   }
 
   createChart(): void {
